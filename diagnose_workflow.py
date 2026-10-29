@@ -24,13 +24,21 @@ try:
     print("\n📋 Step 3: Creating test claim...")
     claim_state = {
         "claim_id": "DIAG-001",
-        "claim_text": "Medical claim for $500 doctor visit",
-        "documents": [],
-        "validation_passed": True,
-        "pii_detected": False,
-        "decision": None
+        "claim_data": {
+            "claim_text": "Medical claim for $500 doctor visit",
+            "amount": 500,
+            "type": "Medical"
+        },
+        "masked_claim": None,
+        "pii_detected": [],
+        "intake_valid": False,
+        "policy_documents": [],
+        "validation_result": {},
+        "decision": {},
+        "errors": [],
+        "messages": []
     }
-    print("✅ Test claim created")
+    print("✅ Test claim created with correct state structure")
 
     print("\n📋 Step 4: Processing claim...")
     print("-" * 70)

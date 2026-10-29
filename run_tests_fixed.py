@@ -113,11 +113,19 @@ def test_workflow_flexible():
 
     claim_state = {
         "claim_id": "TEST-001",
-        "claim_text": "Medical claim for $500",
-        "documents": [],
-        "validation_passed": True,
-        "pii_detected": False,
-        "decision": None
+        "claim_data": {
+            "claim_text": "Medical claim for $500",
+            "amount": 500,
+            "type": "Medical"
+        },
+        "masked_claim": None,
+        "pii_detected": [],
+        "intake_valid": False,
+        "policy_documents": [],
+        "validation_result": {},
+        "decision": {},
+        "errors": [],
+        "messages": []
     }
 
     # Process
@@ -172,11 +180,19 @@ def test_perf():
     workflow = build_workflow()
     claim_state = {
         "claim_id": "PERF-001",
-        "claim_text": "Test",
-        "documents": [],
-        "validation_passed": True,
-        "pii_detected": False,
-        "decision": None
+        "claim_data": {
+            "claim_text": "Medical claim for testing",
+            "amount": 1000,
+            "type": "Medical"
+        },
+        "masked_claim": None,
+        "pii_detected": [],
+        "intake_valid": False,
+        "policy_documents": [],
+        "validation_result": {},
+        "decision": {},
+        "errors": [],
+        "messages": []
     }
 
     start = time.time()
