@@ -1,7 +1,12 @@
 import chromadb
 from chromadb.config import Settings as ChromaSettings
-from langchain_community.vectorstores import Chroma
-from langchain.text_splitters import RecursiveCharacterTextSplitter
+import sys
+from pathlib import Path
+
+# Add parent directory to path for compatibility layer
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from langchain_compat import Chroma, RecursiveCharacterTextSplitter
 from config.settings import settings
 from src.logger import setup_logger
 from src.llm.client import get_embedding_model

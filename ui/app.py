@@ -332,7 +332,10 @@ elif page == "Knowledge Base":
         if st.form_submit_button("📤 Add to Knowledge Base"):
             try:
                 vector_store = get_vector_store()
-                from langchain.schema import Document
+                import sys
+                from pathlib import Path
+                sys.path.insert(0, str(Path(__file__).parent.parent))
+                from langchain_compat import Document
 
                 doc = Document(
                     page_content=doc_content,

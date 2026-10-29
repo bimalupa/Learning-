@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from src.rag.vector_store import get_vector_store
 from src.llm.client import get_llm
 from src.logger import setup_logger
-from langchain.schema import Document
+from langchain_compat import Document
 
 logger = setup_logger(__name__)
 

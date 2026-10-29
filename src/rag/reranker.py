@@ -1,5 +1,8 @@
 from typing import List
-from langchain.schema import Document
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from langchain_compat import Document
 from sentence_transformers import CrossEncoder
 from src.logger import setup_logger
 
