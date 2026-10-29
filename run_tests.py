@@ -19,33 +19,41 @@ results = {
     "errors": []
 }
 
-def test(name, func):
-    """Decorator for tests"""
-    def wrapper():
-        print(f"\n🧪 Testing: {name}")
-        print("-" * 60)
-        try:
-            func()
-            results["tests"][name] = "PASS"
-            results["passed"] += 1
-            print(f"✅ PASS: {name}")
-            return True
-        except AssertionError as e:
-            results["tests"][name] = f"FAIL: {e}"
-            results["failed"] += 1
-            results["errors"].append(f"{name}: {e}")
-            print(f"❌ FAIL: {name}")
-            print(f"   Error: {e}")
-            return False
-        except Exception as e:
-            results["tests"][name] = f"ERROR: {e}"
-            results["failed"] += 1
-            results["errors"].append(f"{name}: {str(e)[:100]}")
-            print(f"❌ ERROR: {name}")
-            print(f"   {str(e)[:100]}")
-            return False
+# List to store test functions
+test_functions = []
 
-    return wrapper
+def test(name):
+    """Decorator for tests - accepts test name as argument"""
+    def decorator(func):
+        def wrapper():
+            print(f"\n🧪 Testing: {name}")
+            print("-" * 60)
+            try:
+                func()
+                results["tests"][name] = "PASS"
+                results["passed"] += 1
+                print(f"✅ PASS: {name}")
+                return True
+            except AssertionError as e:
+                results["tests"][name] = f"FAIL: {e}"
+                results["failed"] += 1
+                results["errors"].append(f"{name}: {e}")
+                print(f"❌ FAIL: {name}")
+                print(f"   Error: {e}")
+                return False
+            except Exception as e:
+                results["tests"][name] = f"ERROR: {e}"
+                results["failed"] += 1
+                results["errors"].append(f"{name}: {str(e)[:100]}")
+                print(f"❌ ERROR: {name}")
+                print(f"   {str(e)[:100]}")
+                return False
+
+        # Register the test
+        test_functions.append(wrapper)
+        return wrapper
+
+    return decorator
 
 
 # ============================================
@@ -361,31 +369,9 @@ def main():
     print("🧪 INSURANCE CLAIM PROCESSING SYSTEM - TEST SUITE")
     print("=" * 70)
 
-    # Run all tests
-    tests_to_run = [
-        test_python_version,
-        test_directories,
-        test_config_files,
-        test_langchain_compat,
-        test_core_imports,
-        test_config_loading,
-        test_logger,
-        test_embeddings,
-        test_vector_store,
-        test_pii_detection,
-        test_sample_policies,
-        test_workflow_build,
-        test_workflow_process,
-        test_data_files,
-        test_chroma_directory,
-        test_response_time,
-        test_pii_masking_workflow,
-        test_end_to_end,
-    ]
+    print(f"\n📋 Running {len(test_functions)} tests...\n")
 
-    print(f"\n📋 Running {len(tests_to_run)} tests...\n")
-
-    for test_func in tests_to_run:
+    for test_func in test_functions:
         test_func()
 
     # Summary
