@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  insurance-claim-processor:
+    build: .
+    container_name: insurance-claim-processor
+    ports:
+      - "8501:8501"
+    environment:
+      # Azure OpenAI Configuration (optional)
+      - AZURE_OPENAI_API_KEY=${AZURE_OPENAI_API_KEY}
+      - AZURE_OPENAI_ENDPOINT=${AZURE_OPENAI_ENDPOINT}
+      - AZURE_OPENAI_API_VERSION=2024-02-15
+      - AZURE_OPENAI_DEPLOYMENT_NAME=gpt-35-turbo
+      - AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-large
+
+      # OpenAI Configuration (fallback)
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=gpt-3.5-turbo
+
+      # Application Settings
+      - LOG_LEVEL=INFO
+      - DEBUG=False
+
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+    restart: unless-stopped
+
+    networks:
+      - insurance-network
+
+networks:
+  insurance-network:
+    driver: bridge

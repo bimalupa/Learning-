@@ -1,0 +1,123 @@
+{
+  "policies": [
+    {
+      "id": "POL-MED-001",
+      "type": "Medical",
+      "coverage": "Comprehensive Medical Coverage",
+      "max_claim_amount": 1000000,
+      "deductible": 500,
+      "covered_services": [
+        "Hospital stay",
+        "Surgery",
+        "Diagnostic tests",
+        "Prescription medications",
+        "Mental health services"
+      ],
+      "exclusions": [
+        "Cosmetic procedures",
+        "Experimental treatments",
+        "Non-emergency services"
+      ]
+    },
+    {
+      "id": "POL-PROP-001",
+      "type": "Property",
+      "coverage": "Home and Contents Insurance",
+      "max_claim_amount": 500000,
+      "deductible": 1000,
+      "covered_events": [
+        "Fire",
+        "Theft",
+        "Vandalism",
+        "Weather damage",
+        "Lightning strike"
+      ],
+      "exclusions": [
+        "Flood",
+        "Earthquake",
+        "War",
+        "Wear and tear"
+      ]
+    },
+    {
+      "id": "POL-AUTO-001",
+      "type": "Auto",
+      "coverage": "Comprehensive Auto Insurance",
+      "max_claim_amount": 250000,
+      "deductible": 500,
+      "covered": [
+        "Collision damage",
+        "Liability",
+        "Medical payments",
+        "Uninsured motorist"
+      ],
+      "exclusions": [
+        "Racing",
+        "Commercial use",
+        "Intentional damage"
+      ]
+    },
+    {
+      "id": "POL-LIFE-001",
+      "type": "Life",
+      "coverage": "Term Life Insurance",
+      "max_claim_amount": 1000000,
+      "deductible": 0,
+      "beneficiary_required": true,
+      "exclusions": [
+        "Suicide (first 2 years)",
+        "Illegal activities",
+        "High-risk activities without rider"
+      ]
+    },
+    {
+      "id": "POL-TRAVEL-001",
+      "type": "Travel",
+      "coverage": "Travel Insurance",
+      "max_claim_amount": 100000,
+      "deductible": 250,
+      "covered": [
+        "Trip cancellation",
+        "Medical emergency",
+        "Baggage loss",
+        "Flight delay",
+        "Emergency evacuation"
+      ],
+      "exclusions": [
+        "Pre-existing conditions",
+        "High-risk countries",
+        "Claims known before purchase"
+      ]
+    }
+  ],
+  "processing_guidelines": {
+    "general": {
+      "claim_processing_time": "10-15 business days",
+      "documentation_required": [
+        "Proof of loss",
+        "Medical reports (if applicable)",
+        "Receipts and invoices",
+        "Police report (for theft/fraud)"
+      ],
+      "claim_limit_validation": "Amount cannot exceed policy limit",
+      "fraud_indicators": [
+        "Multiple similar claims",
+        "Inflated valuations",
+        "Missing documentation",
+        "Inconsistent statements"
+      ]
+    },
+    "medical_claims": {
+      "pre_authorization": "Required for non-emergency procedures",
+      "max_coverage_per_incident": "Based on policy limit",
+      "waiting_period": "30 days for non-emergency services",
+      "age_limits": "Coverage up to age 75"
+    },
+    "property_claims": {
+      "inspection_required": true,
+      "valuation_method": "Replacement cost or actual cash value",
+      "time_limit": "Report within 30 days of loss",
+      "salvage_recovery": "Insurer may recover salvageable items"
+    }
+  }
+}
