@@ -1,6 +1,6 @@
 from typing import List
 from langchain.schema import Document
-from langchain.retrievers import BM25Retriever
+from langchain_community.retrievers import BM25Retriever
 from src.rag.vector_store import get_vector_store
 from src.logger import setup_logger
 from src.rag.reranker import CrossEncoderReranker
